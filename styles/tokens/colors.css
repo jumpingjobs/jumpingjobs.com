@@ -1,0 +1,96 @@
+/* Jumping Jobs — colour system. Palette is pulled from Nordic watercolour: birch paper, peat ink, moss, fjord, ochre, clay.
+   Base scales are prefixed by hue; semantic aliases (--surface-*, --text-*, --accent-*) are what components use.
+   Light ("paper") is :root. Dark ("night") is [data-theme="dark"] or .jj-dark on any ancestor. */
+:root{
+  /* Neutrals — warm, never pure grey */
+  --birch-0:#FFFDF8; --birch-1:#F8F4EA; --birch-2:#EFE9DB; --birch-3:#E2DAC8; --birch-4:#C9BFAA; --birch-5:#9F9583; --birch-6:#6E675A;
+  --peat-1:#4A4338; --peat-2:#332D25; --peat-3:#242019; --peat-4:#1B1813; --peat-5:#131110;
+  /* Night neutrals (dark theme) — spruce-tinted */
+  --night-0:#0F1210; --night-1:#151915; --night-2:#1C211C; --night-3:#242B25; --night-4:#2F382F; --night-5:#3F4A40;
+  /* Watercolour accents */
+  --moss-1:#E4EBDC; --moss-2:#C4D3B3; --moss-3:#93AB7D; --moss-4:#6B8A5A; --moss-5:#4F6B43; --moss-6:#37492F;
+  --fjord-1:#DFE9EF; --fjord-2:#B7CFDD; --fjord-3:#7FA6BD; --fjord-4:#5B86A2; --fjord-5:#3F6480; --fjord-6:#2B4658;
+  --ochre-1:#F6ECD3; --ochre-2:#EBD79E; --ochre-3:#D9BC63; --ochre-4:#C4A04A; --ochre-5:#9C7C33; --ochre-6:#6B5422;
+  --clay-1:#F5E3DA; --clay-2:#E8C1AE; --clay-3:#D69777; --clay-4:#C4704B; --clay-5:#9E5536; --clay-6:#6E3A24;
+
+  /* Semantic — surfaces */
+  --surface-page:var(--birch-1);
+  --surface-card:var(--birch-0);
+  --surface-raised:#FFFFFF;
+  --surface-sunken:var(--birch-2);
+  --surface-inverse:var(--peat-4);
+  --surface-overlay:rgba(27,24,19,.55);
+  /* Semantic — text */
+  --text-body:var(--peat-3);
+  --text-heading:var(--peat-4);
+  --text-muted:var(--peat-1);
+  --text-faint:var(--birch-6);
+  --text-inverse:var(--birch-1);
+  --text-link:var(--fjord-5);
+  --text-link-hover:var(--fjord-6);
+  /* Semantic — borders */
+  --border-subtle:var(--birch-2);
+  --border-default:var(--birch-3);
+  --border-strong:var(--birch-4);
+  --border-focus:var(--fjord-4);
+  /* Semantic — accents */
+  --accent:var(--moss-5);
+  --accent-hover:var(--moss-6);
+  --accent-soft:var(--moss-1);
+  --accent-text:var(--moss-6);
+  --accent-on:var(--birch-0);
+  --secondary:var(--fjord-4);
+  --secondary-soft:var(--fjord-1);
+  --secondary-text:var(--fjord-6);
+  --highlight:var(--ochre-3);
+  --highlight-soft:var(--ochre-1);
+  --highlight-text:var(--ochre-6);
+  /* Semantic — status */
+  --success:var(--moss-4); --success-soft:var(--moss-1); --success-text:var(--moss-6);
+  --info:var(--fjord-4); --info-soft:var(--fjord-1); --info-text:var(--fjord-6);
+  --warning:var(--ochre-4); --warning-soft:var(--ochre-1); --warning-text:var(--ochre-6);
+  --danger:var(--clay-4); --danger-soft:var(--clay-1); --danger-text:var(--clay-6);
+  /* Watercolour washes — soft radial blooms used behind heroes/cards. Always paired with --grain. */
+  --wash-meadow:radial-gradient(60% 80% at 20% 30%,rgba(147,171,125,.55),transparent 70%),radial-gradient(50% 60% at 80% 20%,rgba(217,188,99,.45),transparent 70%),radial-gradient(70% 70% at 60% 90%,rgba(127,166,189,.4),transparent 70%);
+  --wash-fjord:radial-gradient(70% 70% at 25% 25%,rgba(127,166,189,.6),transparent 70%),radial-gradient(60% 60% at 85% 70%,rgba(147,171,125,.45),transparent 70%);
+  --wash-dusk:radial-gradient(60% 70% at 30% 70%,rgba(214,151,119,.5),transparent 70%),radial-gradient(60% 60% at 80% 20%,rgba(217,188,99,.4),transparent 70%);
+  color-scheme:light;
+}
+[data-theme="dark"],.jj-dark{
+  --surface-page:var(--night-1);
+  --surface-card:var(--night-2);
+  --surface-raised:var(--night-3);
+  --surface-sunken:var(--night-0);
+  --surface-inverse:var(--birch-1);
+  --surface-overlay:rgba(9,11,9,.7);
+  --text-body:#DDD6C7;
+  --text-heading:var(--birch-1);
+  --text-muted:#A59D8C;
+  --text-faint:#726B5E;
+  --text-inverse:var(--peat-4);
+  --text-link:var(--fjord-3);
+  --text-link-hover:var(--fjord-2);
+  --border-subtle:var(--night-3);
+  --border-default:var(--night-4);
+  --border-strong:var(--night-5);
+  --border-focus:var(--fjord-3);
+  --accent:var(--moss-3);
+  --accent-hover:var(--moss-2);
+  --accent-soft:rgba(147,171,125,.14);
+  --accent-text:var(--moss-2);
+  --accent-on:var(--night-0);
+  --secondary:var(--fjord-3);
+  --secondary-soft:rgba(127,166,189,.14);
+  --secondary-text:var(--fjord-2);
+  --highlight:var(--ochre-3);
+  --highlight-soft:rgba(217,188,99,.14);
+  --highlight-text:var(--ochre-2);
+  --success:var(--moss-3); --success-soft:rgba(147,171,125,.14); --success-text:var(--moss-2);
+  --info:var(--fjord-3); --info-soft:rgba(127,166,189,.14); --info-text:var(--fjord-2);
+  --warning:var(--ochre-3); --warning-soft:rgba(217,188,99,.14); --warning-text:var(--ochre-2);
+  --danger:var(--clay-3); --danger-soft:rgba(214,151,119,.14); --danger-text:var(--clay-2);
+  --wash-meadow:radial-gradient(60% 80% at 20% 30%,rgba(107,138,90,.35),transparent 70%),radial-gradient(50% 60% at 80% 20%,rgba(196,160,74,.22),transparent 70%),radial-gradient(70% 70% at 60% 90%,rgba(91,134,162,.3),transparent 70%);
+  --wash-fjord:radial-gradient(70% 70% at 25% 25%,rgba(91,134,162,.4),transparent 70%),radial-gradient(60% 60% at 85% 70%,rgba(107,138,90,.3),transparent 70%);
+  --wash-dusk:radial-gradient(60% 70% at 30% 70%,rgba(196,112,75,.3),transparent 70%),radial-gradient(60% 60% at 80% 20%,rgba(196,160,74,.22),transparent 70%);
+  color-scheme:dark;
+}

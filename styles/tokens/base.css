@@ -1,0 +1,21 @@
+/* Minimal base. Components are styled against tokens; these are the few global rules every surface needs. */
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--surface-page);color:var(--text-body);font:var(--type-body);text-wrap:pretty}
+h1,h2,h3,h4,h5,h6{margin:0;color:var(--text-heading);text-wrap:balance}
+p{margin:0}
+a{color:var(--text-link);text-decoration:none;text-underline-offset:3px;transition:color var(--dur-fast) var(--ease-out)}
+a:hover{color:var(--text-link-hover);text-decoration:underline}
+code,kbd,pre{font:var(--type-code)}
+::selection{background:var(--highlight-soft);color:var(--text-heading)}
+:focus-visible{outline:none;box-shadow:var(--ring)}
+/* Watercolour wash helpers */
+.jj-wash{position:relative;isolation:isolate;background-color:var(--surface-page)}
+.jj-wash::before{content:"";position:absolute;inset:0;background:var(--wash-meadow);filter:blur(24px);z-index:-1}
+.jj-wash.fjord::before{background:var(--wash-fjord)}
+.jj-wash.dusk::before{background:var(--wash-dusk)}
+.jj-grain::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.6;mix-blend-mode:multiply;pointer-events:none;z-index:0}
+.jj-dark .jj-grain::after,[data-theme="dark"] .jj-grain::after{mix-blend-mode:screen;opacity:.25}
+/* Motion preference — the design system's reveals and transitions are decorative. */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}

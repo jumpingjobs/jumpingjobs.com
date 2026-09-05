@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* Design-system tokens. These are the source of truth; the Tailwind theme below is
+   only a bridge that exposes them as utilities. Edit tokens, never the bridge. */
+@import "../styles/tokens/colors.css";
+@import "../styles/tokens/typography.css";
+@import "../styles/tokens/spacing.css";
+@import "../styles/tokens/effects.css";
+@import "../styles/tokens/base.css";
+
+/* Dark mode is driven by [data-theme="dark"] on <html>, not by Tailwind's default
+   `prefers-color-scheme` media strategy, so the in-page toggle can override the OS. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* `inline` keeps the var() reference rather than baking in the light value, so every
+   utility re-resolves when the theme flips. */
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-inherit: inherit;
+
+  /* Surfaces — `bg-page`, `bg-card`, `bg-sunken`, … */
+  --color-page: var(--surface-page);
+  --color-card: var(--surface-card);
+  --color-raised: var(--surface-raised);
+  --color-sunken: var(--surface-sunken);
+  --color-inverse: var(--surface-inverse);
+
+  /* Text — `text-heading`, `text-muted`, … (`text-on-inverse` avoids colliding
+     with the `bg-inverse` surface above). */
+  --color-body: var(--text-body);
+  --color-heading: var(--text-heading);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-on-inverse: var(--text-inverse);
+  --color-link: var(--text-link);
+  --color-link-hover: var(--text-link-hover);
+
+  /* Borders — `border-subtle`, `border-default`, … */
+  --color-subtle: var(--border-subtle);
+  --color-default: var(--border-default);
+  --color-strong: var(--border-strong);
+  --color-focus: var(--border-focus);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-text: var(--accent-text);
+  --color-accent-on: var(--accent-on);
+  --color-secondary: var(--secondary);
+  --color-highlight: var(--highlight);
+
+  --color-moss-2: var(--moss-2);
+  --color-moss-3: var(--moss-3);
+  --color-ochre-2: var(--ochre-2);
+  --color-birch-4: var(--birch-4);
+  --color-birch-5: var(--birch-5);
+  --color-night-0: var(--night-0);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-pill: var(--radius-pill);
+
+  --shadow-1: var(--shadow-1);
+  --shadow-2: var(--shadow-2);
+  --shadow-3: var(--shadow-3);
+
+  --container-lg: var(--container-lg);
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+}
+
+/* Composite type roles. CSS's `font` shorthand has no Tailwind equivalent, so the
+   design system's --type-* tokens are exposed as utilities instead of being unpacked. */
+@utility type-display { font: var(--type-display); letter-spacing: var(--tracking-display); }
+@utility type-h1 { font: var(--type-h1); letter-spacing: var(--tracking-display); }
+@utility type-h2 { font: var(--type-h2); letter-spacing: var(--tracking-heading); }
+@utility type-h3 { font: var(--type-h3); letter-spacing: var(--tracking-heading); }
+@utility type-h4 { font: var(--type-h4); letter-spacing: var(--tracking-heading); }
+@utility type-lead { font: var(--type-lead); }
+@utility type-body { font: var(--type-body); }
+@utility type-small { font: var(--type-small); }
+@utility type-code { font: var(--type-code); }
+@utility type-label {
+  font: var(--type-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* The eyebrow line above every section heading. */
+@utility eyebrow {
+  font: var(--type-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+/* Page gutter container, matching the design's 1120px / 24px measure. */
+@utility shell {
+  width: 100%;
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+/* Inline code inside prose keeps the mono face but inherits heading colour. */
+@utility code-inline {
+  font: var(--type-code);
+  color: var(--text-heading);
+}
