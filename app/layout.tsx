@@ -4,7 +4,7 @@ import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
-const title = "Jumping Jobs — your job search, run from your agent's chat";
+const title = "Jumping Jobs — your job search, run from your agent’s chat";
 const description =
   "A skills collection for Claude Code, Cursor, Copilot and friends. Build one durable profile, find and assess roles, tailor your resume to each posting and prep for interviews.";
 
@@ -21,9 +21,19 @@ export const metadata: Metadata = {
     "GitHub Copilot",
     "agent skills",
   ],
-  openGraph: { title, description, url: "/", siteName: "Jumping Jobs", type: "website" },
+  // The card image itself comes from app/opengraph-image.tsx — Next injects
+  // og:image, its dimensions, type and alt text, and mirrors them onto twitter:image.
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Jumping Jobs",
+    title,
+    description,
+    locale: "en_US",
+  },
   twitter: { card: "summary_large_image", title, description },
   alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {

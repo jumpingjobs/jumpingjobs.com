@@ -17,7 +17,7 @@ export function Hero() {
           <span className="mb-2 block text-[clamp(20px,2.6vw,32px)] font-medium tracking-[-0.015em] text-muted">
             Not just easier.
           </span>
-          Your job search, run from your agent&apos;s chat.
+          Your job search, run from your agent’s chat.
         </h1>
 
         <p className="type-lead max-w-[600px] text-body">

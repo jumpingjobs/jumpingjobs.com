@@ -6,7 +6,10 @@
 @import "../styles/tokens/typography.css";
 @import "../styles/tokens/spacing.css";
 @import "../styles/tokens/effects.css";
-@import "../styles/tokens/base.css";
+/* base.css must land in the `base` layer. Unlayered CSS outranks every layered rule
+   regardless of specificity, so leaving it out of a layer lets `a { color: … }` beat
+   Tailwind's colour utilities on every anchor — buttons-as-links included. */
+@import "../styles/tokens/base.css" layer(base);
 
 /* Dark mode is driven by [data-theme="dark"] on <html>, not by Tailwind's default
    `prefers-color-scheme` media strategy, so the in-page toggle can override the OS. */
