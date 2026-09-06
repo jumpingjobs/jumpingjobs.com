@@ -57,8 +57,8 @@ export function Pipeline() {
   job-postings/            `}
             <span className="text-faint"># numbered = pipeline order</span>
             {`
-    1-scraped/  2-applied/  3-interview/
-    4-lost/     5-archived/`}
+    1-scraped/  2-applied/   3-interview/
+    4-lost/     5-archived/  6-won/`}
           </pre>
         </Card>
       </div>

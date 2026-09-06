@@ -76,8 +76,16 @@ export const SKILLS: Skill[] = [
   {
     cmd: "move-job",
     title: "Track the pipeline",
-    desc: "Moves a posting through the numbered stages — scraped, applied, interview, lost, archived — taking its whole file family (resume, cheat sheet, cover letter) along.",
+    desc: "Moves a posting through the numbered stages — scraped, applied, interview, lost, archived, won — taking its whole file family (resume, cheat sheet, cover letter) along.",
     icon: "kanban",
+  },
+  {
+    cmd: "assess-offer",
+    title: "Evaluate the offer",
+    desc: "Extracts every term from the letter, flags what's missing or ambiguous, checks the paper against what was promised verbally, and drafts your negotiation or response.",
+    icon: "handshake",
+    badge: "When it lands",
+    wide: true,
   },
 ];
 
@@ -136,6 +144,12 @@ export const STEPS: Step[] = [
     title: "Debrief",
     desc: "Drain the round into a file before it blurs; stumbles become fixes.",
     icon: "mic",
+  },
+  {
+    cmd: "assess-offer",
+    title: "Decide",
+    desc: "Every term extracted and weighed; the response drafted, never sent.",
+    icon: "handshake",
   },
   {
     cmd: "move-job",
