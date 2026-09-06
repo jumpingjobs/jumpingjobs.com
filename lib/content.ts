@@ -68,6 +68,12 @@ export const SKILLS: Skill[] = [
     icon: "notebook-pen",
   },
   {
+    cmd: "interview-debrief",
+    title: "Capture the round",
+    desc: "Run right after each interview: verbatim questions, what landed or stumbled, signals, the promised next step. Stumbles become next-round prep.",
+    icon: "mic",
+  },
+  {
     cmd: "move-job",
     title: "Track the pipeline",
     desc: "Moves a posting through the numbered stages — scraped, applied, interview, lost, archived — taking its whole file family (resume, cheat sheet, cover letter) along.",
@@ -124,6 +130,12 @@ export const STEPS: Step[] = [
     title: "Prepare",
     desc: "Dossier plus cheat sheet the night before.",
     icon: "notebook-pen",
+  },
+  {
+    cmd: "interview-debrief",
+    title: "Debrief",
+    desc: "Drain the round into a file before it blurs; stumbles become fixes.",
+    icon: "mic",
   },
   {
     cmd: "move-job",

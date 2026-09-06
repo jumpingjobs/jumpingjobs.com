@@ -10,7 +10,7 @@ export function Skills() {
       <div className="shell flex flex-col gap-10">
         <div className="flex max-w-[600px] flex-col gap-3.5">
           <p className="eyebrow">The commands</p>
-          <h2 className="type-h2 text-heading">One onboarding command. Six for the pipeline.</h2>
+          <h2 className="type-h2 text-heading">One onboarding command. Seven for the pipeline.</h2>
           <p className="text-muted">
             Each names one job. Start with <code className="code-inline">/init-resume</code>;
             everything else reads the profile it builds.
