@@ -1,6 +1,10 @@
+"use client";
+
 import { CommandBlock } from "@/components/ds/CommandBlock";
 import { Tag } from "@/components/ds/Tag";
 import { HARNESSES } from "@/lib/content";
+import { EVENTS } from "@/lib/analytics";
+import { track } from "@/lib/track";
 
 export function Hero() {
   return (
@@ -17,7 +21,12 @@ export function Hero() {
         </p>
 
         <div className="flex w-full max-w-[520px] flex-col items-center gap-3.5">
-          <CommandBlock command="npx jumpingjobs install" size="lg" className="w-full" />
+          <CommandBlock
+            command="npx jumpingjobs install"
+            size="lg"
+            className="w-full"
+            onCopy={(command) => track(EVENTS.commandCopied, { command, location: "hero" })}
+          />
           <p className="type-small text-muted">
             Free and open source · MIT · Node 18+ · <a href="#install">Other install methods</a>
           </p>

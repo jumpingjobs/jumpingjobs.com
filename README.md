@@ -42,6 +42,32 @@ is `PiRabbit` from `react-icons/pi`; all other glyphs are Lucide, registered sta
 Dark mode is driven by `data-theme` on `<html>`, set before first paint by an inline script
 so a returning dark-theme visitor never sees a flash of the paper theme.
 
+## Machine-readable endpoints
+
+| Path           | Source                     | Notes                                        |
+| -------------- | -------------------------- | -------------------------------------------- |
+| `/llms.txt`    | `app/llms.txt/route.ts`    | Generated from `lib/content.ts`, so the command list cannot drift from the page |
+| `/sitemap.xml` | `app/sitemap.ts`           | Single entry — the site is one page           |
+| `/robots.txt`  | `app/robots.ts`            | Points crawlers at the sitemap                 |
+| `/og.png`      | `app/og.png/route.tsx`     | 1200×630 share card                            |
+
+`llms.txt` and `og.png` are Route Handlers in folders named for the file rather than
+Next's metadata conventions, because those export extensionless files and GitHub Pages
+serves anything without an extension as `application/octet-stream`.
+
+## Analytics
+
+PostHog, configured entirely through build-time env vars (see [`.env.example`](.env.example)).
+When `NEXT_PUBLIC_POSTHOG_KEY` is unset the library is not merely inert — webpack drops the
+dynamic import, so it is never downloaded. When set, it loads in its own chunk after
+hydration and does not affect First Load JS.
+
+Autocapture and session recording are off. The events raised are the pageview plus
+`command_copied` and `install_tab_changed`, named in `lib/analytics.ts`.
+
+Set the values as repository **variables** (Settings → Secrets and variables → Actions →
+Variables). A PostHog project API key is publishable and write-only, so it is not a secret.
+
 ## Deploy
 
 Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which

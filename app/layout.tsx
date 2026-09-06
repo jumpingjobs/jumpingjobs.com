@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/figtree";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
+import { Analytics } from "@/components/site/Analytics";
 import { OG_ALT, OG_PATH, OG_SIZE } from "@/lib/og";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
@@ -57,7 +58,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
-      <body className="bg-page text-body font-sans">{children}</body>
+      <body className="bg-page text-body font-sans">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

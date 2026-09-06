@@ -12,6 +12,8 @@ import {
   NPM_PACKAGE,
   type InstallTab,
 } from "@/lib/content";
+import { EVENTS } from "@/lib/analytics";
+import { track } from "@/lib/track";
 
 const PANEL_ID = "install-panel";
 
@@ -43,7 +45,10 @@ export function Install() {
             <Tabs
               items={INSTALL_TABS}
               value={tab}
-              onChange={setTab}
+              onChange={(next) => {
+                setTab(next);
+                track(EVENTS.installTabChanged, { tab: next });
+              }}
               variant="pill"
               size="sm"
               label="Install method"
@@ -57,6 +62,7 @@ export function Install() {
                   command={cmd.command}
                   prompt={cmd.prompt}
                   label={cmd.label}
+                  onCopy={(command) => track(EVENTS.commandCopied, { command, location: tab })}
                 />
               ))}
               <p className="type-small text-muted">{INSTALL_NOTES[tab]}</p>
@@ -67,8 +73,14 @@ export function Install() {
               prompt="›"
               label="First run · in your agent chat"
               tone="card"
+              onCopy={(command) => track(EVENTS.commandCopied, { command, location: "first-run" })}
             />
-            <CommandBlock command="npx jumpingjobs list" label="See supported harnesses" tone="card" />
+            <CommandBlock
+              command="npx jumpingjobs list"
+              label="See supported harnesses"
+              tone="card"
+              onCopy={(command) => track(EVENTS.commandCopied, { command, location: "harness-list" })}
+            />
           </div>
         </Card>
       </div>

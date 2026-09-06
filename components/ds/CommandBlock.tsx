@@ -5,6 +5,8 @@ import { cx } from "@/lib/cx";
 
 export type CommandBlockProps = {
   command: string;
+  /** Called after a successful copy. Used for analytics; never for control flow. */
+  onCopy?: (command: string) => void;
   prompt?: string;
   label?: string;
   size?: "md" | "lg";
@@ -18,6 +20,7 @@ export function CommandBlock({
   label,
   size = "md",
   tone = "inverse",
+  onCopy,
   className,
 }: CommandBlockProps) {
   const [copied, setCopied] = useState(false);
@@ -35,6 +38,7 @@ export function CommandBlock({
       return;
     }
     setCopied(true);
+    onCopy?.(command);
     clearTimeout(timer.current);
     timer.current = setTimeout(() => setCopied(false), 1600);
   };
