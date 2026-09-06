@@ -1,4 +1,3 @@
-import { PiRabbit } from "react-icons/pi";
 import { CommandBlock } from "@/components/ds/CommandBlock";
 import { Tag } from "@/components/ds/Tag";
 import { HARNESSES } from "@/lib/content";
@@ -6,17 +5,8 @@ import { HARNESSES } from "@/lib/content";
 export function Hero() {
   return (
     <section className="jj-wash jj-grain overflow-hidden">
-      <div className="shell relative z-[1] flex flex-col items-center gap-7 px-6 pb-20 pt-[104px] text-center">
-        <div className="grid size-16 place-items-center rounded-full bg-accent-soft text-accent-text">
-          <PiRabbit aria-hidden="true" className="text-[36px]" />
-        </div>
-
-        <p className="eyebrow">Seven commands for your coding agent</p>
-
+      <div className="shell relative z-[1] flex flex-col items-center gap-7 px-6 pb-20 pt-24 text-center">
         <h1 className="type-display max-w-[820px] text-[clamp(40px,6vw,68px)] text-heading">
-          <span className="mb-2 block text-[clamp(20px,2.6vw,32px)] font-medium tracking-[-0.015em] text-muted">
-            Not just easier.
-          </span>
           Your job search, run from your agent’s chat.
         </h1>
 
