@@ -12,7 +12,8 @@ export function Pipeline() {
           <p className="text-muted">
             Keep real metrics, stories and constraints in <code className="code-inline">profile.md</code>.
             Each tuned resume trims two pages from it, and anything new you say gets folded back so the
-            profile never goes stale.
+            profile never goes stale. A workspace holds as many applicants as you like — each gets
+            their own folder, profile and pipeline.
           </p>
 
           <ol className="mt-2 flex list-none flex-col p-0">
@@ -53,8 +54,11 @@ export function Pipeline() {
   job-boards.md            `}
             <span className="text-faint"># boards + search config</span>
             {`
-  job-postings/
-    applied/  interview/  lost/  archived/`}
+  job-postings/            `}
+            <span className="text-faint"># numbered = pipeline order</span>
+            {`
+    1-scraped/  2-applied/  3-interview/
+    4-lost/     5-archived/`}
           </pre>
         </Card>
       </div>

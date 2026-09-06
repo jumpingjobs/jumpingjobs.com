@@ -40,7 +40,7 @@ export const SKILLS: Skill[] = [
   {
     cmd: "find-jobs",
     title: "Sweep your boards",
-    desc: "Searches your configured job boards for new, on-profile roles, deduped against everything you have saved.",
+    desc: "Searches your configured job boards for new, on-profile roles, deduped against everything you have saved. Flags roles that are a step up from your current one, and repairs a board's broken extractor instead of reporting it as empty.",
     icon: "search",
   },
   {
@@ -52,7 +52,7 @@ export const SKILLS: Skill[] = [
   {
     cmd: "assess-job",
     title: "Score the fit",
-    desc: "Rates a posting against your profile and hard constraints. Pros, cons, dealbreaker check, verdict.",
+    desc: "Rates a posting against your profile and hard constraints. Pros, cons, dealbreaker check, trajectory — step up, lateral or step down — and an honest verdict.",
     icon: "scale",
   },
   {
@@ -70,7 +70,7 @@ export const SKILLS: Skill[] = [
   {
     cmd: "move-job",
     title: "Track the pipeline",
-    desc: "Moves a posting through applied, interview, lost or archived. Keeps posting and resume together.",
+    desc: "Moves a posting through the numbered stages — scraped, applied, interview, lost, archived — taking its whole file family (resume, cheat sheet, cover letter) along.",
     icon: "kanban",
   },
 ];
@@ -87,7 +87,7 @@ export const DEMO_LINES: DemoLine[] = [
   {
     glyph: "→",
     tone: "agent",
-    text: "Top pick: Staff Engineer · Fjord Labs · Bergen · hybrid. One flag: Norwegian listed as required.",
+    text: "Top pick: Staff Engineer · Fjord Labs · Bergen · hybrid — a step up from your current role. One flag: Norwegian listed as required.",
   },
   { glyph: "›", tone: "user", text: "/tune-resume fjord labs" },
   {
@@ -124,6 +124,12 @@ export const STEPS: Step[] = [
     title: "Prepare",
     desc: "Dossier plus cheat sheet the night before.",
     icon: "notebook-pen",
+  },
+  {
+    cmd: "move-job",
+    title: "Track",
+    desc: "Every stage move takes the posting's whole file family with it.",
+    icon: "kanban",
   },
 ];
 

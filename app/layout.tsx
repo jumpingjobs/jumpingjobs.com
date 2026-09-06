@@ -7,7 +7,7 @@ import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const title = "Jumping Jobs — your job search, run from your agent’s chat";
 const description =
-  "A skills collection for Claude Code, Cursor, Copilot and friends. Build one durable profile, find and assess roles, tailor your resume to each posting and prep for interviews.";
+  "A skills collection for Claude Code, Cursor, Copilot and friends. Build a durable profile, find and assess roles, tailor your resume to each posting and prep for interviews — for one applicant or a whole household.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jumpingjobs.com"),

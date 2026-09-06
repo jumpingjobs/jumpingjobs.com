@@ -11,9 +11,9 @@ export function Hero() {
         </h1>
 
         <p className="type-lead max-w-[600px] text-body">
-          Jumping Jobs is a skills collection for Claude Code, Cursor, Copilot and friends. Build one
+          Jumping Jobs is a skills collection for Claude Code, Cursor, Copilot and friends. Build a
           durable profile, find and assess roles, tailor your resume to each posting and prep for
-          interviews.
+          interviews — for one applicant or a whole household.
         </p>
 
         <div className="flex w-full max-w-[520px] flex-col items-center gap-3.5">
