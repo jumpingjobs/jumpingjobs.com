@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/figtree";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
+import { OG_ALT, OG_PATH, OG_SIZE } from "@/lib/og";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const title = "Jumping Jobs — your job search, run from your agent’s chat";
@@ -21,8 +22,9 @@ export const metadata: Metadata = {
     "GitHub Copilot",
     "agent skills",
   ],
-  // The card image itself comes from app/opengraph-image.tsx — Next injects
-  // og:image, its dimensions, type and alt text, and mirrors them onto twitter:image.
+  // The card is rendered by app/og.png/route.tsx. It is referenced explicitly rather
+  // than via Next's opengraph-image convention, which would emit an extensionless URL
+  // that GitHub Pages serves as application/octet-stream.
   openGraph: {
     type: "website",
     url: "/",
@@ -30,8 +32,14 @@ export const metadata: Metadata = {
     title,
     description,
     locale: "en_US",
+    images: [{ url: OG_PATH, ...OG_SIZE, alt: OG_ALT, type: "image/png" }],
   },
-  twitter: { card: "summary_large_image", title, description },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [{ url: OG_PATH, ...OG_SIZE, alt: OG_ALT }],
+  },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
 };
