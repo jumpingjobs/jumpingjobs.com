@@ -18,6 +18,28 @@ export const HARNESSES = [
   "Kiro",
 ] as const;
 
+/**
+ * Pipeline stage folders, in order. Single source for the workspace tree drawn on the
+ * page and the one written into /llms.txt — they drifted once when each hardcoded it.
+ */
+export const PIPELINE_STAGES = [
+  "1-scraped",
+  "2-applied",
+  "3-interview",
+  "4-lost",
+  "5-archived",
+  "6-won",
+] as const;
+
+/** Renders the stage folders as the two indented lines both surfaces show. */
+export function pipelineStageLines(indent = "    "): string {
+  const half = Math.ceil(PIPELINE_STAGES.length / 2);
+  const width = Math.max(...PIPELINE_STAGES.map((s) => s.length)) + 3;
+  return [PIPELINE_STAGES.slice(0, half), PIPELINE_STAGES.slice(half)]
+    .map((row) => indent + row.map((s) => `${s}/`.padEnd(width)).join("").trimEnd())
+    .join("\n");
+}
+
 export type Skill = {
   cmd: string;
   title: string;

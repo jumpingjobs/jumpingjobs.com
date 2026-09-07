@@ -6,6 +6,7 @@ import {
   PRINCIPLES,
   SKILLS,
   STEPS,
+  pipelineStageLines,
 } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
 
@@ -78,8 +79,7 @@ resume/<your-slug>/
   <your-slug>-resume.html  # layout skeleton
   job-boards.md            # boards + search config
   job-postings/            # numbered = pipeline order
-    1-scraped/  2-applied/  3-interview/
-    4-lost/     5-archived/
+${pipelineStageLines()}
 \`\`\`
 
 A workspace holds as many applicants as you like — each gets their own folder, profile and
