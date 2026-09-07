@@ -3,19 +3,21 @@ import Script from "next/script";
 import "@fontsource-variable/figtree";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
-import { ANALYTICS_ENABLED, CF_BEACON_SRC, CF_BEACON_TOKEN } from "@/lib/analytics";
+import {
+  ANALYTICS_ENABLED,
+  CF_BEACON_SRC,
+  CF_BEACON_TOKEN,
+} from "@/lib/analytics";
 import { OG_ALT, OG_PATH, OG_SIZE } from "@/lib/og";
+import { siteSchemaJson } from "@/lib/schema";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
-const title = "Jumping Jobs — your job search, run from your agent’s chat";
-const description =
-  "A skills collection for Claude Code, Cursor, Copilot and friends. Build a durable profile, find and assess roles, tailor your resume to each posting and prep for interviews — for one applicant or a whole household.";
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jumpingjobs.com"),
-  title,
-  description,
-  applicationName: "Jumping Jobs",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
     "job search",
     "resume",
@@ -30,16 +32,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    siteName: "Jumping Jobs",
-    title,
-    description,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     locale: "en_US",
     images: [{ url: OG_PATH, ...OG_SIZE, alt: OG_ALT, type: "image/png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: [{ url: OG_PATH, ...OG_SIZE, alt: OG_ALT }],
   },
   alternates: { canonical: "/" },
@@ -53,11 +55,19 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: siteSchemaJson() }}
+        />
       </head>
       <body className="bg-page text-body font-sans">
         {children}
