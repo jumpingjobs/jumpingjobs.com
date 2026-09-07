@@ -32,14 +32,8 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
 
-      # NEXT_PUBLIC_* values are inlined at build time, so they must be present here.
-      # These are repository *variables*, not secrets: a PostHog project API key is
-      # publishable and write-only. Analytics is simply off if the key is unset.
+      # The Cloudflare beacon token is public and committed, so no build env is needed.
       - run: npm run build
-        env:
-          NEXT_PUBLIC_POSTHOG_KEY: ${{ vars.NEXT_PUBLIC_POSTHOG_KEY }}
-          NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
-          NEXT_PUBLIC_POSTHOG_PERSISTENCE: ${{ vars.NEXT_PUBLIC_POSTHOG_PERSISTENCE }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

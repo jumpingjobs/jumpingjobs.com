@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "@fontsource-variable/figtree";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
-import { Analytics } from "@/components/site/Analytics";
+import { ANALYTICS_ENABLED, CF_BEACON_SRC, CF_BEACON_TOKEN } from "@/lib/analytics";
 import { OG_ALT, OG_PATH, OG_SIZE } from "@/lib/og";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
@@ -60,7 +61,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-page text-body font-sans">
         {children}
-        <Analytics />
+        {/* Cloudflare Web Analytics — loaded after hydration so it never competes with
+            first paint. Cookieless, so no consent banner is required. */}
+        {ANALYTICS_ENABLED && (
+          <Script
+            id="cf-beacon"
+            strategy="afterInteractive"
+            src={CF_BEACON_SRC}
+            data-cf-beacon={JSON.stringify({ token: CF_BEACON_TOKEN })}
+          />
+        )}
       </body>
     </html>
   );
